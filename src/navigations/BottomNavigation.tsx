@@ -6,6 +6,7 @@ import Home from '../screens/Home'
 import Favorite from '../screens/Favorite'
 
 
+
 const Tab = createBottomTabNavigator()
 
 const BottomTabNavigator = (): JSX.Element => (

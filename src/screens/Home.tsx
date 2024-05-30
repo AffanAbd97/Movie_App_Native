@@ -1,11 +1,10 @@
 import React from 'react'
 import { Text, View } from 'react-native'
+import StackNavigation from '../navigations/StackNavigation'
 
 function Home():JSX.Element{
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <StackNavigation/>
   )
 }
 
