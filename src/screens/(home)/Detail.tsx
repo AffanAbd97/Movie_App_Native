@@ -5,12 +5,12 @@ import {
   DetailScreenNavigationProp,
   DetailScreenRouteProp,
 } from '../../../types/NavigationParams'
-import { API_ACCESS_TOKEN, API_URL } from '../../../types/constant'
+import { API_ACCESS_TOKEN, API_URL } from '@env'
 const DetailScreen = (): JSX.Element => {
   const route = useRoute<DetailScreenRouteProp>()
   const navigation = useNavigation<DetailScreenNavigationProp>()
   const fetchData = (): void => {
-    // Gantilah dengan akses token Anda
+   
     const ACCESS_TOKEN = API_ACCESS_TOKEN
 
     const URL = API_URL as string
