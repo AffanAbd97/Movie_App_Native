@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Movie, MovieListProps } from '../../../types/app'
-import { API_ACCESS_TOKEN } from '@env'
+import { API_ACCESS_TOKEN, API_URL } from '@env'
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import MovieItem from './MovieItem'
 import axios from 'axios'
@@ -22,21 +22,16 @@ function MovieList({ title, coverType, path }: MovieListProps) {
   }, [])
 
   const getMovieList = (): void => {
-    const url = `https://api.themoviedb.org/3/${path}`
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${API_ACCESS_TOKEN}`,
-      },
-    }
+    const url = `${API_URL}/${path}`
 
-    axios.get(url, {
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${API_ACCESS_TOKEN}`,
-      },
-    }).then((response) => {
+    axios
+      .get(url, {
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${API_ACCESS_TOKEN}`,
+        },
+      })
+      .then((response) => {
         const data = response.data
         setMovies(data.results)
       })
@@ -44,7 +39,6 @@ function MovieList({ title, coverType, path }: MovieListProps) {
         console.log(errorResponse)
       })
   }
-
 
   return (
     <View>
