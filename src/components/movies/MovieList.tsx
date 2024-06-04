@@ -3,6 +3,7 @@ import { Movie, MovieListProps } from '../../../types/app'
 import { API_ACCESS_TOKEN } from '@env'
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import MovieItem from './MovieItem'
+import axios from 'axios'
 const coverImageSize = {
   backdrop: {
     width: 280,
@@ -30,17 +31,21 @@ function MovieList({ title, coverType, path }: MovieListProps) {
       },
     }
 
-    fetch(url, options)
-      .then(async (response) => await response.json())
-      .then((response) => {
-        setMovies(response.results)
+    axios.get(url, {
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${API_ACCESS_TOKEN}`,
+      },
+    }).then((response) => {
+        const data = response.data
+        setMovies(data.results)
       })
       .catch((errorResponse) => {
         console.log(errorResponse)
       })
   }
 
-  console.log(movies)
+
   return (
     <View>
       <View style={styles.header}>

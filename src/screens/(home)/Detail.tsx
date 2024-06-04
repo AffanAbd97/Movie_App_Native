@@ -6,16 +6,15 @@ import {
   DetailScreenRouteProp,
 } from '../../../types/NavigationParams'
 import { API_ACCESS_TOKEN, API_URL } from '@env'
+import axios from 'axios'
 const DetailScreen = (): JSX.Element => {
   const route = useRoute<DetailScreenRouteProp>()
   const navigation = useNavigation<DetailScreenNavigationProp>()
   const fetchData = (): void => {
-   
     const ACCESS_TOKEN = API_ACCESS_TOKEN
 
     const URL = API_URL as string
 
- 
     if (ACCESS_TOKEN == null || URL == null) {
       throw new Error('ENV not found')
     }
@@ -27,8 +26,13 @@ const DetailScreen = (): JSX.Element => {
       },
     }
 
-    fetch(URL, options)
-      .then(async (response) => await response.json())
+    axios
+      .get(URL, {
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${ACCESS_TOKEN}`,
+        },
+      })
       .then((response) => {
         console.log(response)
       })
