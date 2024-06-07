@@ -3,8 +3,10 @@ import React from 'react'
 import HomeScreen from '../screens/(home)/Index'
 import DetailScreen from '../screens/(home)/Detail'
 
+import FavoriteScreen from '../screens/FavoriteScreen'
+
 const Stack = createNativeStackNavigator()
-function StackNavigation(): JSX.Element {
+function HomeStackNavigation(): JSX.Element {
   return (
     <Stack.Navigator initialRouteName="Index">
       <Stack.Screen
@@ -16,5 +18,17 @@ function StackNavigation(): JSX.Element {
     </Stack.Navigator>
   )
 }
+function FavoriteStackNavigation(): JSX.Element {
+  return (
+    <Stack.Navigator initialRouteName="FavoriteScreen">
+      <Stack.Screen
+        name="FavoriteScreen"
+        component={FavoriteScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen name="Detail" component={DetailScreen} />
+    </Stack.Navigator>
+  )
+}
 
-export default StackNavigation
+export { HomeStackNavigation, FavoriteStackNavigation }
