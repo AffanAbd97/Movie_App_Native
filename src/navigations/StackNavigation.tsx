@@ -4,6 +4,7 @@ import HomeScreen from '../screens/(home)/Index'
 import DetailScreen from '../screens/(home)/Detail'
 
 import FavoriteScreen from '../screens/FavoriteScreen'
+import SearchScreen from '../screens/SearchScreen'
 
 const Stack = createNativeStackNavigator()
 function HomeStackNavigation(): JSX.Element {
@@ -30,5 +31,17 @@ function FavoriteStackNavigation(): JSX.Element {
     </Stack.Navigator>
   )
 }
+function SearchStackNavigation(): JSX.Element {
+  return (
+    <Stack.Navigator initialRouteName="SearchScreen">
+      <Stack.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen name="Detail" component={DetailScreen} />
+    </Stack.Navigator>
+  )
+}
 
-export { HomeStackNavigation, FavoriteStackNavigation }
+export { HomeStackNavigation, FavoriteStackNavigation,SearchStackNavigation }

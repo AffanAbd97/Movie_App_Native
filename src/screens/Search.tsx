@@ -1,12 +1,17 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import KeywordSearch from '../components/search/KeywordSearch'
+import CategorySearch from '../components/search/CategorySearch'
+import { SearchStackNavigation } from '../navigations/StackNavigation'
 
-function Search():JSX.Element {
+
+const Search = (): JSX.Element => {
+ 
+
   return (
-    <View>
-      <Text>Search</Text>
-    </View>
+   <SearchStackNavigation/>
   )
 }
+
 
 export default Search
