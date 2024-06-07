@@ -1,12 +1,9 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React, {  } from 'react'
+import { FavoriteStackNavigation } from '../navigations/StackNavigation'
 
-function Favorite():JSX.Element {
-  return (
-    <View>
-      <Text>Favorite</Text>
-    </View>
-  )
+function Favorite(): JSX.Element {
+
+  return <FavoriteStackNavigation/>
 }
 
 export default Favorite
