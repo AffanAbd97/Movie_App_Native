@@ -5,6 +5,7 @@ import DetailScreen from '../screens/(home)/Detail'
 
 import FavoriteScreen from '../screens/FavoriteScreen'
 import SearchScreen from '../screens/SearchScreen'
+import ListScreen from '../screens/ListScreen'
 
 const Stack = createNativeStackNavigator()
 function HomeStackNavigation(): JSX.Element {
@@ -40,8 +41,10 @@ function SearchStackNavigation(): JSX.Element {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Detail" component={DetailScreen} />
+      <Stack.Screen name="List" component={ListScreen} />
     </Stack.Navigator>
   )
 }
+
 
 export { HomeStackNavigation, FavoriteStackNavigation,SearchStackNavigation }
