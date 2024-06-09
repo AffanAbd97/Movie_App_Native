@@ -38,12 +38,10 @@ const KeywordSearch = (props: Props) => {
 
       const data = response.data
       setMovieList(data.results)
-      if (keyword!=''&&data.results.length<=0) {
-        
-          setScreen(ScreenState.Error)
-      }else{
-
-          setScreen(ScreenState.Success)
+      if (keyword != '' && data.results.length <= 0) {
+        setScreen(ScreenState.Error)
+      } else {
+        setScreen(ScreenState.Success)
       }
     } catch (error) {
       console.log(error)
@@ -98,7 +96,7 @@ const KeywordSearch = (props: Props) => {
     }
   }
   return (
-    <View>
+    <View style={styles.outerContainer}>
       <View style={styles.container}>
         <View style={styles.searchSection}>
           <Feather
@@ -131,6 +129,9 @@ const coverImageSize = {
 }
 
 const styles = StyleSheet.create({
+  outerContainer: {
+    flex: 1,
+  },
   container: {
     justifyContent: 'center',
     alignItems: 'center',

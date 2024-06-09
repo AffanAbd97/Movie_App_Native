@@ -50,3 +50,8 @@ export enum ScreenState {
   NotFound = 'NotFound',
   Success = 'Success',
 }
+
+export interface Genre{
+  id:number
+  name:string
+}

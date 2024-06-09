@@ -3,14 +3,12 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import KeywordSearch from '../components/search/KeywordSearch'
 import CategorySearch from '../components/search/CategorySearch'
 
-
-
 const SearchScreen = (): JSX.Element => {
   const [selectedBar, setSelectedBar] = useState<string>('keyword')
 
   return (
     <View style={styles.container}>
-      <View>
+      <View style={styles.innerContainer}>
         <View style={styles.topBarContainer}>
           {['keyword', 'category'].map((item: string, index: number) => (
             <TouchableOpacity
@@ -41,9 +39,14 @@ const SearchScreen = (): JSX.Element => {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
+    flex: 1,
+  },
+  innerContainer: {
+    flex: 1,
   },
   topBarContainer: {
     display: 'flex',
+   
     flexDirection: 'row',
     width: '100%',
   },
