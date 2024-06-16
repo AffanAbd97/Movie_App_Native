@@ -28,7 +28,7 @@ function FavoriteScreen(): JSX.Element {
   }, [])
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         
         data={FavoriteList}
@@ -58,7 +58,9 @@ const coverImageSize = {
   },
 }
 const styles = StyleSheet.create({
- 
+  container: {
+    paddingBottom:72
+  },
   title: {
     fontSize: 20,
     fontWeight: '900',
