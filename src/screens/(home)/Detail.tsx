@@ -1,5 +1,4 @@
 import {
-  Button,
   ImageBackground,
   StyleSheet,
   Text,
@@ -7,11 +6,8 @@ import {
   View,
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useNavigation, useRoute } from '@react-navigation/native'
-import {
-  DetailScreenNavigationProp,
-  DetailScreenRouteProp,
-} from '../../../types/NavigationParams'
+import { useRoute } from '@react-navigation/native'
+import { DetailScreenRouteProp } from '../../../types/NavigationParams'
 import { API_ACCESS_TOKEN, API_URL } from '@env'
 import axios from 'axios'
 import { Movie, ScreenState } from '../../../types/app'
@@ -25,7 +21,6 @@ import { formatDate } from '../../../helpers/utils'
 
 const DetailScreen = (): JSX.Element => {
   const route = useRoute<DetailScreenRouteProp>()
-  const navigation = useNavigation<DetailScreenNavigationProp>()
   const [movie, setMovie] = useState<Movie | null>(null)
   const [isFavorite, setIsFavorite] = useState(false)
 
@@ -77,7 +72,7 @@ const DetailScreen = (): JSX.Element => {
     try {
       const initialData: string | null =
         await AsyncStorage.getItem('@FavoriteList')
-      let favorites: Movie[] = initialData ? JSON.parse(initialData) : []
+      const favorites: Movie[] = initialData ? JSON.parse(initialData) : []
       return favorites.some((item) => item.id === id)
     } catch (error) {
       console.log(error)
@@ -89,7 +84,7 @@ const DetailScreen = (): JSX.Element => {
     try {
       const initialData: string | null =
         await AsyncStorage.getItem('@FavoriteList')
-      let favorites: Movie[] = initialData ? JSON.parse(initialData) : []
+      const favorites: Movie[] = initialData ? JSON.parse(initialData) : []
       const updatedFavorites = favorites.filter((item) => item.id !== id)
       await AsyncStorage.setItem(
         '@FavoriteList',
@@ -105,7 +100,7 @@ const DetailScreen = (): JSX.Element => {
     try {
       const initialData: string | null =
         await AsyncStorage.getItem('@FavoriteList')
-      let favMovieList: Movie[] = initialData ? JSON.parse(initialData) : []
+      const favMovieList: Movie[] = initialData ? JSON.parse(initialData) : []
       favMovieList.push(movie)
       await AsyncStorage.setItem('@FavoriteList', JSON.stringify(favMovieList))
       setIsFavorite(true)
@@ -246,7 +241,10 @@ const Detail = ({
         <View style={styles.infoWrapper}>
           <InfoText text={movie.original_language} title="Original Language" />
           <InfoText text={`${movie.popularity}`} title="Popularity" />
-          <InfoText text={formatDate(movie.release_date)} title="Release Date" />
+          <InfoText
+            text={formatDate(movie.release_date)}
+            title="Release Date"
+          />
           <InfoText text={`${movie.vote_count}`} title="Vote Count" />
         </View>
       </View>

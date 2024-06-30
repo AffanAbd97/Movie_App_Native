@@ -1,9 +1,8 @@
-import AsyncStorage from "@react-native-async-storage/async-storage"
-import { useEffect, useState } from "react"
-import { Movie } from "../../types/app"
-import { FlatList, StyleSheet, View } from "react-native"
-import MovieItem from "../components/movies/MovieItem"
-
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import React, { useEffect, useState } from 'react'
+import { Movie } from '../../types/app'
+import { FlatList, StyleSheet, View } from 'react-native'
+import MovieItem from '../components/movies/MovieItem'
 
 function FavoriteScreen(): JSX.Element {
   const [FavoriteList, setFavoriteList] = useState<Movie[]>([])
@@ -11,7 +10,7 @@ function FavoriteScreen(): JSX.Element {
     try {
       const initialData: string | null =
         await AsyncStorage.getItem('@FavoriteList')
-      let favorites: Movie[] = initialData ? JSON.parse(initialData) : []
+      const favorites: Movie[] = initialData ? JSON.parse(initialData) : []
       return favorites
     } catch (error) {
       console.log(error)
@@ -30,7 +29,6 @@ function FavoriteScreen(): JSX.Element {
   return (
     <View style={styles.container}>
       <FlatList
-        
         data={FavoriteList}
         renderItem={({ item }) => (
           <View style={styles.movieList}>
@@ -59,7 +57,7 @@ const coverImageSize = {
 }
 const styles = StyleSheet.create({
   container: {
-    paddingBottom:72
+    paddingBottom: 72,
   },
   title: {
     fontSize: 20,
@@ -69,7 +67,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     flex: 1,
     flexDirection: 'column',
-    alignItems:'center'
+    alignItems: 'center',
   },
 })
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StatusBar, StyleSheet, View } from 'react-native'
 import MovieList from '../../components/movies/MovieList'
 import type { MovieListProps } from '../../../types/app'
 
@@ -25,21 +25,21 @@ const movieLists: MovieListProps[] = [
     coverType: 'poster',
   },
 ]
-function HomeScreen():JSX.Element{
+function HomeScreen(): JSX.Element {
   return (
     <ScrollView>
-    <View style={styles.container}>
-      {movieLists.map((movieList) => (
-        <MovieList
-          title={movieList.title}
-          path={movieList.path}
-          coverType={movieList.coverType}
-          key={movieList.title}
-        />
-      ))}
-      <StatusBar translucent={false} />
-    </View>
-  </ScrollView>
+      <View style={styles.container}>
+        {movieLists.map((movieList) => (
+          <MovieList
+            title={movieList.title}
+            path={movieList.path}
+            coverType={movieList.coverType}
+            key={movieList.title}
+          />
+        ))}
+        <StatusBar translucent={false} />
+      </View>
+    </ScrollView>
   )
 }
 const styles = StyleSheet.create({
@@ -50,6 +50,5 @@ const styles = StyleSheet.create({
     rowGap: 16,
   },
 })
-
 
 export default HomeScreen

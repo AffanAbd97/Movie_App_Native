@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
   topBarContainer: {
     display: 'flex',
-   
+
     flexDirection: 'row',
     width: '100%',
   },

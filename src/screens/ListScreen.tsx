@@ -1,10 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useNavigation, useRoute } from '@react-navigation/native'
-import {
-  ListScreenNavigationProp,
-  ListScreenRouteProp,
-} from '../../types/NavigationParams'
+import { useRoute } from '@react-navigation/native'
+import { ListScreenRouteProp } from '../../types/NavigationParams'
 import { Movie, ScreenState } from '../../types/app'
 import MovieItem from '../components/movies/MovieItem'
 import { API_ACCESS_TOKEN, API_URL } from '@env'
@@ -13,7 +10,6 @@ import Loading from './Loading'
 
 const ListScreen = () => {
   const route = useRoute<ListScreenRouteProp>()
-  const navigation = useNavigation<ListScreenNavigationProp>()
   const genre_id = route.params.genre.id
   const genre_name = route.params.genre.name
   const [movieList, setMovieList] = useState<Movie[]>([])
@@ -104,7 +100,7 @@ const styles = StyleSheet.create({
     fontWeight: '900',
   },
   container: {
-    paddingBottom:72
+    paddingBottom: 72,
   },
   movieList: {
     marginTop: 8,
